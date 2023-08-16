@@ -23,7 +23,7 @@ Go to the project directory
 Build the app 
 
 ```bash
-  go Build
+  go build
 ```
 
 Start the server
