@@ -34,3 +34,5 @@ Start the server
 
 This example is for starting server in ubuntu. In windows run the the respective .exe file
 
+After succesfull run of the server start the index.html 
+
