@@ -1,15 +1,15 @@
-const socket = new WebSocket("ws://localhost:3000/message");
-
-
-    socket.addEventListener("open", (event) => {
-        console.log("WebSocket connection opened:", event);
-    
-        // Send data to the server
-        socket.send("Hello, server!");
-    });
-
-
-    socket.onmessage = function(event) {
-        var messageDiv = document.getElementById("message");
-        messageDiv.innerHTML = "Message from server: " + event.data;
-    };
+var socket = new WebSocket("ws://localhost:3000/message");
+        
+        socket.onmessage = function(event) {
+            var messageDiv = document.getElementById("message");
+            messageDiv.innerHTML += "<p>Message from server: " + event.data + "</p>";
+        };
+        
+        document.getElementById("messageForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            var messageInput = document.getElementById("messageInput");
+            var message = messageInput.value;
+            console.log(message);
+            socket.send(message);
+            messageInput.value = "";
+        });
