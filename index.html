@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WebSocket Example</title>
+</head>
+<body>
+    <div id="message"></div>
+    <form id="messageForm">
+        <input type="text" id="messageInput" placeholder="Enter your message">
+        <button type="submit">Send</button>
+    </form>
+    <script>
+        var socket = new WebSocket("ws://localhost:3000/message");
+        
+        socket.onmessage = function(event) {
+            var messageDiv = document.getElementById("message");
+            messageDiv.innerHTML += "<p>Message from server: " + event.data + "</p>";
+        };
+        
+        document.getElementById("messageForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            var messageInput = document.getElementById("messageInput");
+            var message = messageInput.value;
+            console.log(message);
+            socket.send(message);
+            messageInput.value = "";
+        });
+    </script>
+</body>
+</html>
