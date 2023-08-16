@@ -39,7 +39,6 @@ func handleWebSocket(c *gin.Context) {
 func (c *Client) readPump() {
 
 	for {
-		fmt.Println("two...")
 		_, msg, err := c.conn.ReadMessage()
 		if err != nil {
 			break
